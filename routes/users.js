@@ -9,8 +9,12 @@ router.route('/register')
 		var user = new User(req.body);
 
 		user.save(function(err) {
-			if (err) { return res.send(err); }
+			if (err) { 
+				console.log('save error');
+				return res.send(err); 
+			}
 
+			console.log('no error : ' + user._id);
 			return res.json({ data: user });
 		});
 	});
