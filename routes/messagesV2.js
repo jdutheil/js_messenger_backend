@@ -11,8 +11,6 @@ router.route('/')
 			   .populate('_author')
 			   .exec(function(err, messages) {
 			       if (err) { res.send(err); }
-
-			       console.log(JSON.stringify(messages));
 			       
 			       res.json({ data: messages });		
 			   })
