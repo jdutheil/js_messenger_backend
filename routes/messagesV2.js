@@ -20,10 +20,14 @@ router.route('/')
 		console.log('message V2 post');
 
 		var userId = req.body._author._id;
+		if (!userId) {
+			return res.send('error : no author id');
+		}
 
 		User.findOne({ _id: userId })
 			.exec(function(err, user) {
 				if (err) { return res.send(err); }
+				if (!user) { return res.send('error : user not found'); }
 
 				//console.log('user found : ' + user.username);
 
