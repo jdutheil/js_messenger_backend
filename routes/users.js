@@ -9,9 +9,9 @@ router.route('/register')
 		var user = new User(req.body);
 
 		user.save(function(err) {
-			if (err) { res.send(err); }
+			if (err) { return res.send(err); }
 
-			res.json({ data: user });
+			return res.json({ data: user });
 		});
 	});
 
@@ -24,13 +24,13 @@ router.route('/login')
 		User.findOne({ username: username })
 			.exec(function(err, user) {
 				if (err) {
-					res.send(err);
+					return res.send(err);
 				}
 
 				if (user == null || user.password != password) {
-					res.json({ data: null });
+					return res.json({ data: null });
 				} else {
-					res.json({ data: user });
+					return res.json({ data: user });
 				}
 			});
 	});
@@ -39,7 +39,7 @@ router.route('/users')
 
 	.get(function(req, res) {
 		User.find(function(err, users) {
-			if (err) { res.send(err); }
+			if (err) { return res.send(err); }
 
 			res.json({ data: users });
 		});
