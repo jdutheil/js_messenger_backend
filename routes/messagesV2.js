@@ -25,9 +25,9 @@ router.route('/')
 
 		User.findOne({ _id: userId })
 			.exec(function(err, user) {
-				if (err) { res.send(err); }
+				if (err) { return res.send(err); }
 
-				console.log('user found : ' + user.username);
+				//console.log('user found : ' + user.username);
 
 				var message = new Message(req.body);
 				message._author = userId;
