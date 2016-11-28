@@ -8,4 +8,7 @@ router.get('/', function(req, res) {
 var usersRoutes = require('./routes/users');
 router.use('/', usersRoutes);
 
+var messagesRoutes = require('./routes/messagesV2');
+router.use('/messages', messagesRoutes);
+
 module.exports = router;
