@@ -21,15 +21,13 @@ router.route('/')
 	.post(function(req, res) {
 		console.log('message V2 post');
 
-		var userId = req.body.author;
+		var userId = req.body._author._id;
 
 		User.findOne({ _id: userId })
 			.exec(function(err, user) {
 				if (err) { res.send(err); }
 
 				console.log('user found : ' + user.username);
-
-				delete req.body.author;
 
 				var message = new Message(req.body);
 				message._author = userId;
