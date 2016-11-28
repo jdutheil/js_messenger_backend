@@ -7,9 +7,6 @@ router.get('/', function(req, res) {
 	});
 });
 
-var usersRoutes = require('./routes/users');
-router.use('/users/', usersRoutes);
-
 var messagesRoutes = require('./routes/messages');
 router.use('/messages/', messagesRoutes);
 

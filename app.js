@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/messenger');
 
 var routes = require('./routes');
+var routesV2 = require('./routesv2');
 
 var app = express();
 
@@ -20,6 +21,7 @@ app.use(function(req, res, next) {
 });
 
 app.use('/messenger', routes);
+app.use('/messenger/v2', routesV2);
 
 var server = app.listen(4000, function() {
 	console.log('Listening on port ' + server.address().port);
