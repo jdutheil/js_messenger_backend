@@ -35,6 +35,7 @@ router.route('/')
 			});
 		} else {
 			console.log('no content / message defined : ' + JSON.stringify(message));
+			res.json({ data: 'no content / message defined' });
 		}
 	});
 
