@@ -21,16 +21,21 @@ router.route('/')
 		console.log('post !');
 
 		var message = new Message(req.body);
-		// Save date
-		message.createdAt = new Date();
 
-		message.save(function(err) {
-			if (err) {
-				res.send(err);
-			}
+		if (message.content && message.author) {
+			// Save date
+			message.createdAt = new Date();
 
-			res.json({ data: message });
-		});
+			message.save(function(err) {
+				if (err) {
+					res.send(err);
+				}
+
+				res.json({ data: message });
+			});
+		} else {
+			console.log('no content / message defined : ' + JSON.stringify(message));
+		}
 	});
 
 module.exports = router;
